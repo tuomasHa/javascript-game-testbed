@@ -1,0 +1,12 @@
+#message-output {
+  padding: 5px;
+}
+
+.message {
+  display: block;
+}
+
+#button-container button{
+  float: left;
+  margin: 5px 10px;
+}
