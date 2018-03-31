@@ -10,7 +10,7 @@ $( document ).ready(function() {
   var json = $('body script[type="application/json"]').text();
   var loadData;
   try {
-      console.log('json element content:', json);
+      //console.log('json element content:', json);
       loadData = JSON.parse(json);
     } catch (e) {
       var span = $('<span/>').addClass('message').css('color', 'red').html(
@@ -41,5 +41,13 @@ $( document ).ready(function() {
 
   $('#clear-output-button').click(function() {
     output.empty();
+  });
+
+  $('#load-data-button').click(function() {
+    var message = {
+      messageType: "LOAD",
+      gameState: loadData
+    };
+    frame[0].contentWindow.postMessage(message, "*");
   });
 });
