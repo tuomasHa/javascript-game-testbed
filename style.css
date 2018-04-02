@@ -6,7 +6,12 @@
   display: block;
 }
 
-#button-container button{
+#button-container, #check-container {
+  float:left;
+  clear: both;
+}
+
+#button-container button, #check-container input{
   float: left;
   margin: 5px 10px;
 }

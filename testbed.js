@@ -37,6 +37,9 @@ $( document ).ready(function() {
         }
       }
     }
+    else if (data.messageType == "LOAD_REQUEST") {
+      load();
+    }
   });
 
   $('#clear-output-button').click(function() {
@@ -44,10 +47,23 @@ $( document ).ready(function() {
   });
 
   $('#load-data-button').click(function() {
-    var message = {
-      messageType: "LOAD",
-      gameState: loadData
-    };
-    frame[0].contentWindow.postMessage(message, "*");
+    load();
   });
+
+  function load() {
+    var message = {};
+    if ($("#send-error-check").prop("checked")) {
+      message = {
+        messageType: "ERROR",
+        info: "Failed to load game state!"
+      };
+    }
+    else {
+      message = {
+        messageType: "LOAD",
+        gameState: loadData
+      };
+    }
+    frame[0].contentWindow.postMessage(message, "*");
+  }
 });
